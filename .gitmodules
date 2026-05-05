@@ -1,0 +1,3 @@
+[submodule "wordle"]
+	path = wordle
+	url = https://github.com/aahana-surya/wordle
