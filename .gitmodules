@@ -1,3 +1,6 @@
 [submodule "wordle"]
 	path = wordle
 	url = https://github.com/aahana-surya/wordle
+[submodule "todolist"]
+	path = todolist
+	url = https://github.com/aahana-surya/todolist
