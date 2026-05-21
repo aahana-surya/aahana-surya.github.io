@@ -1,0 +1,86 @@
+
+h1{
+    margin-top: 225px;
+    color: rgb(150, 96, 201);
+    font-size: 50px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow: 2px 2px 4px rgba(249, 239, 239, 0.3);
+}
+body{
+    background: #a1f9cc;
+    background: -webkit-linear-gradient(0deg, #a1f9cc 0%, #9acaf4 50%, #bcb6e0 100%);
+    background: linear-gradient(0deg, #a1f9cc 0%, #9acaf4 50%, #bcb6e0 100%);
+    background-size: cover;
+    min-height: 100vh;
+    text-align:center;
+    align-items: center;
+}
+.input-container{
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgb(143, 95, 161); 
+    align-items: center;
+    
+}
+input{
+    height: 50px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button {
+    /* Layout & Size */
+    margin-top: 30px;
+    height: 40px;
+    width: 100px;
+    padding: 0 15px;
+
+    /* Colors & Styling */
+    background-color: rgb(162, 127, 184);
+    color: white; /* Added text color for readability */
+    border: 1px solid rgb(242, 228, 242);
+    border-radius: 20px;
+    font-weight: bold; /* Optional: adds emphasis */
+                
+    /* Interactivity */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover transition */                
+}
+    
+ul{
+    margin: 20px auto;
+    width: 400px;
+    padding: 10px;
+    min-height: 1em;
+    list-style: none;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+li{
+    padding: 10px;
+    margin: 5px 0;
+    background-color: white;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana;
+}
+.completed {
+    text-decoration: line-through;
+    color: #000000;
+}
+.home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
