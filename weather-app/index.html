@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weatherwise</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+ 
+  <h1>Weather App</h1>
+  <p class="subtitle">Aahana Surya x PM Accelerator · Powered by Open-Meteo </p>
+ 
+  <!-- Search -->
+  <div class="search-row">
+    <div class="search-wrap" @click.stop>
+      <input id="search-input"
+             type="text"
+             placeholder="City, ZIP, landmark, or lat,lon…"
+             autocomplete="off"
+             aria-label="Search location"
+             aria-autocomplete="list"
+             aria-controls="suggestions"
+             :aria-expanded="suggestionsOpen.toString()"
+             v-model="query"
+             @keydown.enter.prevent="handleSearch"
+             @input="onInput"
+             @focus="handleFocus"
+      >
+      <div id="suggestions" role="listbox" :class="{ open: suggestionsOpen }">
+        <button
+          v-for="(item, index) in currentSuggestions"
+          :key="item.name + '-' + index"
+          class="sugg-item"
+          role="option"
+          @mousedown.prevent="selectResult(item)"
+        >
+          <strong>{{ item.name }}</strong>
+          <span>— {{ [item.admin1, item.country].filter(Boolean).join(', ') }}</span>
+        </button>
+      </div>
+    </div>
+    <button id="btn-search" class="btn btn-primary" aria-label="Search" @click="handleSearch" :disabled="loading">Search</button>
+    <button id="btn-locate" class="btn btn-secondary" title="Use my current location" aria-label="Use my location" @click="handleGeolocate" :disabled="loading">📍</button>
+  </div>
+ 
+  <!-- Error -->
+  <div id="error-banner" role="alert" v-if="error" :class="{ show: error }">
+    <span style="font-size:18px;flex-shrink:0">⚠️</span>
+    <span id="error-text">{{ error }}</span>
+    <button class="dismiss" id="error-dismiss" aria-label="Dismiss" @click="hideError">×</button>
+  </div>
+ 
+  <!-- Loading -->
+  <div id="loading" aria-live="polite" v-if="loading" :class="{ show: loading }">
+    <div class="spinner">🌀</div>
+    <p style="font-size:14px">Fetching weather data…</p>
+  </div>
+ 
+  <!-- Empty state -->
+  <div id="empty" v-if="showEmpty" :class="{ show: showEmpty }">
+    <div class="globe">🌍</div>
+    <h2>Where are you headed?</h2>
+    <p>Search any city, ZIP code, landmark, or GPS coordinates or tap 📍 to use your current location.</p>
+  </div>
+ 
+  <!-- Hero card -->
+  <div id="hero" aria-live="polite" v-if="weather" :class="heroClass">
+    <div class="hero-ring" style="width:200px;height:200px;right:-40px;top:-40px"></div>
+    <div class="hero-ring" style="width:120px;height:120px;right:20px;top:20px"></div>
+    <div class="hero-top">
+      <div>
+        <div class="hero-meta" id="hero-meta">{{ heroMeta }}</div>
+        <div class="hero-city" id="hero-city">{{ locationName }}</div>
+      </div>
+      <div style="text-align:right">
+        <div class="hero-cond" id="hero-cond">{{ heroCondition }}</div>
+        <div class="hero-feels" id="hero-feels">{{ heroFeels }}</div>
+      </div>
+    </div>
+    <div class="hero-temp" id="hero-temp" v-html="heroTemp"></div>
+    <div class="hero-hilo" id="hero-hilo">{{ heroHilo }}</div>
+    <div class="sparkline-wrap" v-show="sparklinePoints">
+      <div class="sparkline-label">Next 24 hours</div>
+      <svg id="sparkline-svg" viewBox="0 0 280 56" style="width:100%;height:56px;display:block">
+        <polyline :points="sparklinePoints" fill="none" stroke="#93c5fd" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+ 
+  <!-- Stats -->
+  <div id="stats-grid" v-if="stats.length" :class="{ show: stats.length }">
+    <div class="stat" v-for="stat in stats" :key="stat.label">
+      <div class="stat-label">{{ stat.icon }}  {{ stat.label }}</div>
+      <div class="stat-value">{{ stat.value }}</div>
+    </div>
+  </div>
+ 
+  <!-- Forecast -->
+  <div id="forecast-section" v-if="forecast.length" :class="{ show: forecast.length }">
+    <div class="section-label">5-Day Forecast</div>
+    <div id="forecast-row" role="list">
+      <div class="day-card" :class="{ today: item.today }" role="listitem" v-for="item in forecast" :key="item.name">
+        <div class="day-name">{{ item.name }}</div>
+        <div class="day-icon" :title="item.cond">{{ item.icon }}</div>
+        <div class="day-cond">{{ item.cond }}</div>
+        <div class="day-temps">
+          <strong>{{ item.high }}°</strong>
+          <span>{{ item.low }}°</span>
+        </div>
+        <div class="day-rain" v-if="item.rain">💧 {{ item.rain }}%</div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Travel note -->
+  <div id="travel-note" v-if="travelNote" :class="{ show: travelNote }">
+    <strong>🧳 Travel note: </strong>{{ travelNote }}
+  </div>
+ 
+  <!-- Attribution -->
+  <div id="attribution" v-if="weather" :class="{ show: weather }">
+    Weather data: <a href="https://open-meteo.com" target="_blank" rel="noreferrer">Open-Meteo</a> ·
+    Geocoding: Open-Meteo + Nominatim/OSM
+  </div>
+    <p class="subtitle">. . . . . . . . . . . . . . . . . . . . . . . . . .  . . . .  . . .  . </p>
+   <p class="subtitle">The Product Manager Accelerator Program is designed to support PM professionals through every stage of their careers. </p>
+</div>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
