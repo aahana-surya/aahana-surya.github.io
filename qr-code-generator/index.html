@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code Generator Preview</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>QR Code Generator Preview</h1>
+    <p>Enter a URL and click "Generate" to preview the QR code in your browser.</p>
+
+    <form id="qr-form">
+      <label for="url-input">URL</label>
+      <input id="url-input" type="url" placeholder="https://example.com" required />
+      <button type="submit">Generate QR Code</button>
+    </form>
+
+    <div id="qr-output" class="qr-card" hidden>
+      <h2>Preview</h2>
+      <div id="qrcode"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
