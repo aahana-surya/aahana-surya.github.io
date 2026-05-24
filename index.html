@@ -10,7 +10,17 @@
             <link rel="stylesheet" href="main site/styles.css">
         </head>
         <script>
-        document.addEventListener("DOMContentLoaded", () => {
+            let i = 0;
+            const txt = "Aahana Surya";
+            function typeWriter() {
+              if (i < txt.length) {
+                document.getElementById("demo").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+              }
+            }
+            document.addEventListener("DOMContentLoaded", typeWriter);
+          document.addEventListener("DOMContentLoaded", () => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -49,7 +59,7 @@
                   </div>
                 </div>
                   <div class="px-4 py-5 my-5 text-center">
-                  <h1> Aahana Surya</h1>
+                  <h1 id = "demo"></h1>
                   <p class="lead mb-4">My Sample Project Portfolio</p>
                   </div>
             </div>

@@ -15,7 +15,9 @@
       --error-border: #fecaca;
       --error-text: #991b1b;
     }
- 
+    .home-button{
+      color: rgb(164, 179, 220)
+    }
     @media (prefers-color-scheme: dark) {
       :root {
         --accent: #60a5fa;
