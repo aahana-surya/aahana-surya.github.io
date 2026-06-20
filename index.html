@@ -1,143 +1,219 @@
-<DOCTYPE html>
-    <html lang = "en">
-    <head>
-            <meta charset = UTF-8>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-            <title>Document</title>
-            <link href="https://fonts.googleapis.com" rel="stylesheet">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-            <link rel="stylesheet" href="main site/styles.css">
-        </head>
-        <script>
-            let i = 0;
-            const txt = "Aahana Surya";
-            function typeWriter() {
-              if (i < txt.length) {
-                document.getElementById("demo").innerHTML += txt.charAt(i);
-                i++;
-                setTimeout(typeWriter, 150);
-              }
-            }
-            document.addEventListener("DOMContentLoaded", typeWriter);
-          document.addEventListener("DOMContentLoaded", () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                    }
-                });
-            }, {
-                threshold: 0.15
-            });
-            const hiddenElements = document.querySelectorAll(".fade-in");
-            hiddenElements.forEach((el) => {
-                observer.observe(el);
-            });
-        });
-        </script>
-        <body>
-            <div class="intro">
-                <div class="floating-dots">
-                  <div class="background">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-                  <div class="px-4 py-5 my-5 text-center">
-                  <h1 id = "demo"></h1>
-                  <p class="lead mb-4">My Sample Project Portfolio</p>
-                  </div>
-            </div>
-            <div class="pic fade-in">
-                <img src = "main site/img/1732426591910.jpeg" alt = "Picture of me" class= me_pic>
-                <h1 class="Hello">About Me</h1>
-                <p class="about_me">Hi, I am Aahana Surya! I am an undergraduate student at Northeastern Univerity, studying computer science with a concentration in AI and minor in Robotics. I love programming, and this is my personal website.</p>
-            </div>
-            <div class="projects fade-in">
-                <h2 class="proj">Projects</h2>
-                <h1 class="dots">. . . . . </h1>
-                <div class="project-container">
-                  <a class="project-tile" href="https://aahana-world-cup-predictor.streamlit.app">
-                    <div class="project-tile-preview" style="background-image:url('main site/img/worldcup.png')"></div>
-                    <div class="project-tile-content">
-                      <h3>World Cup Predictor</h3>
-                      <p>An interactive Streamlit app for football forecasting, built to compare teams, simulate outcomes, and explore match predictions.</p>
-                      <span class="project-tile-button">View</span>
-                    </div>
-                  </a>
-                  <a class="project-tile" href="https://aahana-surya.github.io/todolist/">
-                    <div class="project-tile-preview" style="background-image:url('main site/img/todolist.png')"></div>
-                    <div class="project-tile-content">
-                      <h3>To Do List</h3>
-                      <p>A task dashboard built for clarity, keyboard control, and simple daily workflows.</p>
-                      <span class="project-tile-button">View</span>
-                    </div>
-                  </a>
-                  <a class="project-tile" href="https://aahana-surya.github.io/drum-kit/">
-                    <div class="project-tile-preview" style="background-image:url('main site/img/drumkit.png')"></div>
-                    <div class="project-tile-content">
-                      <h3>Drum Kit</h3>
-                      <p>A tactile soundboard with animated note feedback and rhythm-driven interaction.</p>
-                      <span class="project-tile-button">View</span>
-                    </div>
-                  </a>
-                  <a class="project-tile" href="https://aahana-surya.github.io/qr-code-generator/">
-                    <div class="project-tile-preview" style="background-image:url('main site/img/qr.png')"></div>
-                    <div class="project-tile-content">
-                      <h3>QR Code Generator</h3>
-                      <p>Generate share-ready QR codes instantly with a smooth palette and quick access.</p>
-                      <span class="project-tile-button">View</span>
-                    </div>
-                  </a>
-                  <a class="project-tile" href="https://aahana-surya.github.io/weather-app/">
-                    <div class="project-tile-preview" style="background-image:url('main site/img/weather-app.png')"></div>
-                    <div class="project-tile-content">
-                      <h3>Weather App</h3>
-                      <p>A responsive forecast tool with layered cards, gentle transitions, and local data.</p>
-                      <span class="project-tile-button">View</span>
-                    </div>
-                  </a>
-                  <a class="project-tile" href="https://aahana-surya.github.io/wordle/">
-                    <div class="project-tile-preview" style="background-image:url('main site/img/wordle.png')"></div>
-                    <div class="project-tile-content">
-                      <h3>Wordle</h3>
-                      <p>A crisp word puzzle with responsive animation, clean feedback, and a playful interface.</p>
-                      <span class="project-tile-button">View</span>
-                    </div>
-                  </a>
-                </div>
-            </div>
-            <div class="px-4 py-5 my-5 text-center">
-                <h1 class="display-5 fw-bold text-body-emphasis">Contact Me!</h1>
-                <div class="col-lg-6 mx-auto">
-                  <p class="blurb">Open for any opportunities to work in AI, web developement, software engineering, and more.</p>
-                  <p class="blurb">GitHub: https://github.com/aahana-surya </p>
-                  <p class="blurb">LinkedIn: www.linkedin.com/in/aahana-surya-689232315</p>
-                  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a class="btn" href="mailto:aahana.gys@gmail.com">EMAIL ME</a></div>
-                </div>
-            </div>
-            <div class="container">
-                <footer class="py-3 my-4">
-                  <p class="text-center text-body-secondary">© 2025 Website, Aahana Surya</p>
-                </footer>
-              </div>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aahana Surya</title>
+  <link href="https://fonts.googleapis.com" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="main site/styles.css">
+</head>
+<script>
+  let i = 0;
+  const txt = "Aahana Surya";
+  function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("demo").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, 150);
+    }
+  }
+  document.addEventListener("DOMContentLoaded", typeWriter);
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
 
-    </html>
+    const fill = document.getElementById('tl-fill');
+    const track = document.getElementById('tl-track');
+    const tlItems = document.querySelectorAll('.tl-item');
+
+    function updateTimeline() {
+      if (!track) return;
+      const trackRect = track.getBoundingClientRect();
+      const viewMid = window.innerHeight * 0.5;
+      const scrolled = viewMid - trackRect.top;
+      const pct = Math.min(100, Math.max(0, (scrolled / trackRect.height) * 100));
+      fill.style.height = pct + '%';
+
+      tlItems.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        const dotY = rect.top + 6;
+        if (dotY < viewMid + 40) item.classList.add('tl-visible');
+        if (dotY < viewMid + 40 && dotY > viewMid - 140) {
+          item.classList.add('tl-active');
+        } else {
+          item.classList.remove('tl-active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateTimeline, { passive: true });
+    updateTimeline();
+  });
+</script>
+<body>
+  <header class="site-header">
+    <nav class="nav-inner">
+      <a class="logo" href="/">Aahana</a>
+      <ul class="nav-links">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="intro">
+    <div class="floating-dots">
+      <div class="background">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="px-4 py-5 my-5 text-center">
+      <h1 id="demo"></h1>
+      <p class="lead mb-4">Computer Science Student &amp; AI Engineer</p>
+    </div>
+  </div>
+
+  <div id="about" class="pic fade-in">
+    <img src="main site/img/1732426591910.jpeg" alt="Picture of me" class="me_pic">
+    <h1 class="Hello">About Me</h1>
+    <p class="about_me">Hi, I am Aahana Surya! I am an undergraduate student at Northeastern Univerity, studying computer science with a concentration in AI and minor in Robotics. I love programming, and this is my personal website.</p>
+  </div>
+
+  <div id="projects" class="projects fade-in">
+    <h2 class="proj">Projects</h2>
+    <div class="project-container">
+      <a class="project-tile" href="https://aahana-world-cup-predictor.streamlit.app">
+        <div class="project-tile-preview" style="background-image:url('main site/img/worldcup.png')"></div>
+        <div class="project-tile-content">
+          <h3>World Cup Predictor</h3>
+          <p>An interactive Streamlit app for football forecasting, built to compare teams, simulate outcomes, and explore match predictions.</p>
+          <span class="project-tile-button">View</span>
+        </div>
+      </a>
+      <a class="project-tile" href="https://aahana-surya.github.io/wordle/">
+        <div class="project-tile-preview" style="background-image:url('main site/img/wordle.png')"></div>
+        <div class="project-tile-content">
+          <h3>Wordle</h3>
+          <p>A crisp word puzzle with responsive animation, clean feedback, and a playful interface.</p>
+          <span class="project-tile-button">View</span>
+        </div>
+      </a>
+      <a class="project-tile" href="https://aahana-surya.github.io/drum-kit/">
+        <div class="project-tile-preview" style="background-image:url('main site/img/drumkit.png')"></div>
+        <div class="project-tile-content">
+          <h3>Drum Kit</h3>
+          <p>A tactile soundboard with animated note feedback and rhythm-driven interaction.</p>
+          <span class="project-tile-button">View</span>
+        </div>
+      </a>
+      <a class="project-tile" href="https://aahana-surya.github.io/weather-app/">
+        <div class="project-tile-preview" style="background-image:url('main site/img/weather-app.png')"></div>
+        <div class="project-tile-content">
+          <h3>Weather App</h3>
+          <p>A responsive forecast tool with layered cards, gentle transitions, and local data.</p>
+          <span class="project-tile-button">View</span>
+        </div>
+      </a>
+      <a class="project-tile" href="https://aahana-surya.github.io/todolist/">
+        <div class="project-tile-preview" style="background-image:url('main site/img/todolist.png')"></div>
+        <div class="project-tile-content">
+          <h3>To Do List</h3>
+          <p>A task dashboard built for clarity, keyboard control, and simple daily workflows.</p>
+          <span class="project-tile-button">View</span>
+        </div>
+      </a>
+      <a class="project-tile" href="https://aahana-surya.github.io/qr-code-generator/">
+        <div class="project-tile-preview" style="background-image:url('main site/img/qr.png')"></div>
+        <div class="project-tile-content">
+          <h3>QR Code Generator</h3>
+          <p>Generate share-ready QR codes instantly with a smooth palette and quick access.</p>
+          <span class="project-tile-button">View</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div id="experience" class="experience-section fade-in">
+    <h2 class="section-title">Experience</h2>
+    <div class="tl-track" id="tl-track">
+      <div class="tl-rail"></div>
+      <div class="tl-fill" id="tl-fill"></div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-period">Summer 2026</p>
+        <p class="tl-title">Sports Media, Inc.</p>
+        <p class="tl-role">AI Systems Integrator Intern</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-period">Summer 2026</p>
+        <p class="tl-title">PM Accelerator</p>
+        <p class="tl-role">Frontend Engineer Intern</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-period">Oct 2025 &ndash; May 2026</p>
+        <p class="tl-title">City of Oakland</p>
+        <p class="tl-role">AI Research Analyst</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-period">Sep 2025 &ndash; May 2026</p>
+        <p class="tl-title">Northeastern Machine Learning Club</p>
+        <p class="tl-role">Secretary &amp; Instructor</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-period">Jul &ndash; Sep 2024</p>
+        <p class="tl-title">Joyful Pets</p>
+        <p class="tl-role">AI Chatbot Development Intern</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="skills" class="skills fade-in">
+    <h2 class="section-title">Skills</h2>
+    <div class="skill-list">
+      <p><strong>Programming</strong>: Python &middot; Java &middot; Kotlin &middot; JavaScript (React.js) &middot; HTML/CSS &middot; C#</p>
+      <p><strong>AI / ML</strong>: LLM integration &middot; prompt engineering &middot; AI agent design &middot; OpenAI &middot; Google AI Studio &middot; scikit-learn &middot; model evaluation &amp; testing</p>
+      <p><strong>Data</strong>: NumPy &middot; Pandas &middot; Excel &middot; Google Sheets &middot; Google Forms &middot; survey design &amp; analysis &middot; qualitative coding &middot; data cleaning</p>
+      <p><strong>Cloud &amp; Tools</strong>: AWS &middot; Git/GitHub &middot; Google Workspace &middot; Microsoft Office &middot; VSCode &middot; Jupyter Lab/Notebook</p>
+    </div>
+  </div>
+
+  <div id="contact" class="px-4 py-5 my-5 text-center contact-section">
+    <h2>Contact Me</h2>
+    <p class="section-note">I&#8217;m open to AI engineering, ML research, and software internship roles. Feel free to reach out.</p>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:aahana.gys@gmail.com">aahana.gys@gmail.com</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/aahana-surya" target="_blank">github.com/aahana-surya</a></p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/aahana-surya-689232315" target="_blank">linkedin.com/in/aahana-surya-689232315</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <footer class="py-3 my-4">
+      <p class="text-center text-body-secondary">&copy; 2026 Aahana Surya</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
