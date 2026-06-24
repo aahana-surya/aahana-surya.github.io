@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aahana Surya</title>
-  <link href="https://fonts.googleapis.com" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="main site/styles.css">
 </head>
@@ -27,6 +26,19 @@
       });
     }, { threshold: 0.15 });
     document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+
+    const picFrame = document.querySelector(".pic-frame");
+    if (picFrame) {
+      const ringObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            picFrame.classList.add("draw");
+            obs.unobserve(picFrame);
+          }
+        });
+      }, { threshold: 0.45 });
+      ringObserver.observe(picFrame);
+    }
 
     const fill = document.getElementById('tl-fill');
     const track = document.getElementById('tl-track');
@@ -86,7 +98,18 @@
   </div>
 
   <div id="about" class="pic fade-in">
-    <img src="main site/img/1732426591910.jpeg" alt="Picture of me" class="me_pic">
+    <div class="pic-frame">
+      <svg class="pic-ring" viewBox="0 0 240 240" aria-hidden="true">
+        <defs>
+          <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4d6f9c"></stop>
+            <stop offset="100%" stop-color="#8fcaff"></stop>
+          </linearGradient>
+        </defs>
+        <circle cx="120" cy="120" r="116" stroke="url(#ringGrad)"></circle>
+      </svg>
+      <img src="main site/img/1732426591910.jpeg" alt="Picture of me" class="me_pic">
+    </div>
     <h1 class="Hello">About Me</h1>
     <p class="about_me">Hi, I am Aahana Surya! I am an undergraduate student at Northeastern Univerity, studying computer science with a concentration in AI and minor in Robotics. I love programming, and this is my personal website.</p>
   </div>
@@ -190,21 +213,72 @@
 
   <div id="skills" class="skills fade-in">
     <h2 class="section-title">Skills</h2>
-    <div class="skill-list">
-      <p><strong>Programming</strong>: Python &middot; Java &middot; Kotlin &middot; JavaScript (React.js) &middot; HTML/CSS &middot; C#</p>
-      <p><strong>AI / ML</strong>: LLM integration &middot; prompt engineering &middot; AI agent design &middot; OpenAI &middot; Google AI Studio &middot; scikit-learn &middot; model evaluation &amp; testing</p>
-      <p><strong>Data</strong>: NumPy &middot; Pandas &middot; Excel &middot; Google Sheets &middot; Google Forms &middot; survey design &amp; analysis &middot; qualitative coding &middot; data cleaning</p>
-      <p><strong>Cloud &amp; Tools</strong>: AWS &middot; Git/GitHub &middot; Google Workspace &middot; Microsoft Office &middot; VSCode &middot; Jupyter Lab/Notebook</p>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3 class="skill-card-title">Programming</h3>
+        <div class="skill-tags">
+          <span>Python</span><span>Java</span><span>Kotlin</span><span>JavaScript (React.js)</span><span>HTML/CSS</span><span>C#</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-card-title">AI / ML</h3>
+        <div class="skill-tags">
+          <span>LLM integration</span><span>Prompt engineering</span><span>AI agent design</span><span>OpenAI</span><span>Google AI Studio</span><span>scikit-learn</span><span>Model evaluation &amp; testing</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-card-title">Data</h3>
+        <div class="skill-tags">
+          <span>NumPy</span><span>Pandas</span><span>Excel</span><span>Google Sheets</span><span>Google Forms</span><span>Survey design &amp; analysis</span><span>Qualitative coding</span><span>Data cleaning</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3 class="skill-card-title">Cloud &amp; Tools</h3>
+        <div class="skill-tags">
+          <span>AWS</span><span>Git/GitHub</span><span>Google Workspace</span><span>Microsoft Office</span><span>VSCode</span><span>Jupyter Lab/Notebook</span>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div id="contact" class="px-4 py-5 my-5 text-center contact-section">
-    <h2>Contact Me</h2>
-    <p class="section-note">I&#8217;m open to AI engineering, ML research, and software internship roles. Feel free to reach out.</p>
-    <div class="contact-info">
-      <p><strong>Email:</strong> <a href="mailto:aahana.gys@gmail.com">aahana.gys@gmail.com</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/aahana-surya" target="_blank">github.com/aahana-surya</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/aahana-surya-689232315" target="_blank">linkedin.com/in/aahana-surya-689232315</a></p>
+  <div id="contact" class="contact-section fade-in">
+    <h2 class="section-title">Let&#8217;s Connect</h2>
+    <p class="contact-lead">I&#8217;m open to AI engineering, ML research, and software internship roles. Feel free to reach out.</p>
+    <div class="contact-cards">
+      <a class="contact-card" href="mailto:aahana.gys@gmail.com">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+            <path d="m3 7 9 6 9-6"></path>
+          </svg>
+        </span>
+        <span class="contact-meta">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">aahana.gys@gmail.com</span>
+        </span>
+      </a>
+      <a class="contact-card" href="https://github.com/aahana-surya" target="_blank" rel="noopener">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.41 7.86 10.94.58.11.79-.25.79-.56 0-.27-.01-1.01-.02-1.98-3.2.69-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14 0 1.55-.01 2.8-.01 3.18 0 .31.21.68.8.56A11.52 11.52 0 0 0 23.5 12.02C23.5 5.74 18.27.5 12 .5Z"></path>
+          </svg>
+        </span>
+        <span class="contact-meta">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">github.com/aahana-surya</span>
+        </span>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/aahana-surya-689232315" target="_blank" rel="noopener">
+        <span class="contact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"></path>
+          </svg>
+        </span>
+        <span class="contact-meta">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">in/aahana-surya</span>
+        </span>
+      </a>
     </div>
   </div>
 
